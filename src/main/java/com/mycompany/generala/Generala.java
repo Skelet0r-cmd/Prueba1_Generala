@@ -6,6 +6,7 @@
 package com.mycompany.generala;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.IntStream;
 
 /**
@@ -39,66 +40,38 @@ public class Generala {
         return 0;
     }
 
-    public static int ones(int d1, int d2, int d3, int d4, int d5) {
+    //Suma algunos los elementos de un array.
+    public static int sumSelectedElements(int objetivo, int d1, int d2, int d3, int d4, int d5) {
+        int[] tallies = new int[5];
+        tallies[0] = d1;
+        tallies[1] = d2;
+        tallies[2] = d3;
+        tallies[3] = d4;
+        tallies[4] = d5;
         int sum = 0;
-        if (d1 == 1) {
-            sum++;
+        for (int s : tallies) {
+            if (s == objetivo) {
+                sum++;
+            }
         }
-        if (d2 == 1) {
-            sum++;
-        }
-        if (d3 == 1) {
-            sum++;
-        }
-        if (d4 == 1) {
-            sum++;
-        }
-        if (d5 == 1) {
-            sum++;
-        }
+        return sum;
+    }
 
+    //Se implementa en el cuerpo los metodos "sumAllElements" y "compareEquality".
+    //A todos los ones,twos y threes.
+    public static int ones(int d1, int d2, int d3, int d4, int d5) {
+        int sum = sumSelectedElements(1,d1, d2, d3, d4, d5);
         return sum;
     }
 
     public static int twos(int d1, int d2, int d3, int d4, int d5) {
-        int sum = 0;
-        if (d1 == 2) {
-            sum += 2;
-        }
-        if (d2 == 2) {
-            sum += 2;
-        }
-        if (d3 == 2) {
-            sum += 2;
-        }
-        if (d4 == 2) {
-            sum += 2;
-        }
-        if (d5 == 2) {
-            sum += 2;
-        }
+        int sum = sumSelectedElements(2,d1, d2, d3, d4, d5);
         return sum;
     }
 
     public static int threes(int d1, int d2, int d3, int d4, int d5) {
-        int s;
-        s = 0;
-        if (d1 == 3) {
-            s += 3;
-        }
-        if (d2 == 3) {
-            s += 3;
-        }
-        if (d3 == 3) {
-            s += 3;
-        }
-        if (d4 == 3) {
-            s += 3;
-        }
-        if (d5 == 3) {
-            s += 3;
-        }
-        return s;
+        int sum = sumSelectedElements(3,d1, d2, d3, d4, d5);
+        return sum;
     }
 
     protected int[] dice;
@@ -111,8 +84,9 @@ public class Generala {
         dice[3] = d4;
         dice[4] = _5;
     }
-
+    
     public int fours() {
+
         int sum;
         sum = 0;
         for (int at = 0; at != 5; at++) {
@@ -213,10 +187,12 @@ public class Generala {
         }
         return 0;
     }
+
     //Se implementa en el cuerpo el método "searhObjectRepeated" y "searchNumberSpecific"
     //Se verifica que ambos cumplan con los parametros.
     public static int smallStraight(int d1, int d2, int d3, int d4, int d5) {
-        if (searchNumberSpecific(6, d1, d2, d3, d4, d5)==false && searhObjectRepeated(d1, d2, d3, d4, d5)==false ) {
+        if (searchNumberSpecific(6, d1, d2, d3, d4, d5) == false
+                && searhObjectRepeated(d1, d2, d3, d4, d5) == false) {
             return 15;
         }
         return 0;
@@ -265,6 +241,11 @@ public class Generala {
             return false;
         }
         return true;
+    }
+
+    public static boolean checkFullHouse(int d1, int d2, int d3, int d4, int d5) {
+
+        return false;
     }
 
     public static int fullHouse(int d1, int d2, int d3, int d4, int d5) {
