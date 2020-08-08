@@ -213,53 +213,28 @@ public class Generala {
         }
         return 0;
     }
-
+    //Se implementa en el cuerpo el método "searhObjectRepeated" y "searchNumberSpecific"
+    //Se verifica que ambos cumplan con los parametros.
     public static int smallStraight(int d1, int d2, int d3, int d4, int d5) {
-        int[] tallies;
-        tallies = new int[6];
-        tallies[d1 - 1] += 1;
-        tallies[d2 - 1] += 1;
-        tallies[d3 - 1] += 1;
-        tallies[d4 - 1] += 1;
-        tallies[d5 - 1] += 1;
-        if (tallies[0] == 1
-                && tallies[1] == 1
-                && tallies[2] == 1
-                && tallies[3] == 1
-                && tallies[4] == 1) {
+        if (searchNumberSpecific(6, d1, d2, d3, d4, d5)==false && searhObjectRepeated(d1, d2, d3, d4, d5)==false ) {
             return 15;
         }
         return 0;
     }
+
     //Se implementa en el cuerpo el método "searhObjectRepeated" y "searchNumberSpecific"
     //Y se evalúa su estado, si alguno de estos contradice 
     public static int largeStraight(int d1, int d2, int d3, int d4, int d5) {
-        if (searchNumberSpecific(1,d1, d2, d3, d4, d5)) {
+        if (searchNumberSpecific(1, d1, d2, d3, d4, d5)) {
             if (searhObjectRepeated(d1, d2, d3, d4, d5)) {
                 return 0;
             }
         }
         return 20;
     }
-    //Verificca si la lista posee algún número repetido.
-    //En caso de que exista uno repetido devolverá false.
-    public static boolean searhObjectRepeated(int d1, int d2, int d3, int d4, int d5) {
-        int[] tallies = new int[5];
-        tallies[0] = d1;
-        tallies[1] = d2;
-        tallies[2] = d3;
-        tallies[3] = d4;
-        tallies[4] = d5;
-        long cont = Arrays.stream(tallies)
-                .distinct()
-                .count();
-        if (cont < 5) {
-            return true;
-        }
-        return false;
-    }
+
     //Busca un número en específico dentro de la lista en caso de que existe dicho número retorna veerdadero.
-    public static boolean searchNumberSpecific(int objetivo,int d1, int d2, int d3, int d4, int d5) {
+    public static boolean searchNumberSpecific(int objetivo, int d1, int d2, int d3, int d4, int d5) {
         int[] tallies = new int[5];
         tallies[0] = d1;
         tallies[1] = d2;
@@ -272,6 +247,24 @@ public class Generala {
             }
         }
         return false;
+    }
+
+    //Verificca si la lista posee algún número repetido.
+    //En caso de que exista uno repetido devolverá true.
+    public static boolean searhObjectRepeated(int d1, int d2, int d3, int d4, int d5) {
+        int[] tallies = new int[5];
+        tallies[0] = d1;
+        tallies[1] = d2;
+        tallies[2] = d3;
+        tallies[3] = d4;
+        tallies[4] = d5;
+        long cont = Arrays.stream(tallies)
+                .distinct()
+                .count();
+        if (cont == 5) {
+            return false;
+        }
+        return true;
     }
 
     public static int fullHouse(int d1, int d2, int d3, int d4, int d5) {
