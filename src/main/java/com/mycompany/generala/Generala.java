@@ -51,7 +51,7 @@ public class Generala {
         int sum = 0;
         for (int s : tallies) {
             if (s == objetivo) {
-                sum++;
+                sum = sum + s;
             }
         }
         return sum;
@@ -60,17 +60,17 @@ public class Generala {
     //Se implementa en el cuerpo los metodos "sumAllElements" y "compareEquality".
     //A todos los ones,twos y threes.
     public static int ones(int d1, int d2, int d3, int d4, int d5) {
-        int sum = sumSelectedElements(1,d1, d2, d3, d4, d5);
+        int sum = sumSelectedElements(1, d1, d2, d3, d4, d5);
         return sum;
     }
 
     public static int twos(int d1, int d2, int d3, int d4, int d5) {
-        int sum = sumSelectedElements(2,d1, d2, d3, d4, d5);
+        int sum = sumSelectedElements(2, d1, d2, d3, d4, d5);
         return sum;
     }
 
     public static int threes(int d1, int d2, int d3, int d4, int d5) {
-        int sum = sumSelectedElements(3,d1, d2, d3, d4, d5);
+        int sum = sumSelectedElements(3, d1, d2, d3, d4, d5);
         return sum;
     }
 
@@ -84,28 +84,26 @@ public class Generala {
         dice[3] = d4;
         dice[4] = _5;
     }
-    
-    public int fours() {
 
-        int sum;
-        sum = 0;
-        for (int at = 0; at != 5; at++) {
-            if (dice[at] == 4) {
-                sum += 4;
+    //Método de suma para fours and fives.
+    public static int sumOfSelectedNumbers(int[] dice, int objetivo) {
+        int sum = 0;
+        for (int s : dice) {
+            if (s == objetivo) {
+                sum = (sum + s);
             }
         }
         return sum;
     }
 
+    public int fours() {
+        int sum = sumOfSelectedNumbers(dice, 4);
+        return sum;
+    }
+
     public int fives() {
-        int s = 0;
-        int i;
-        for (i = 0; i < dice.length; i++) {
-            if (dice[i] == 5) {
-                s = s + 5;
-            }
-        }
-        return s;
+        int sum = sumOfSelectedNumbers(dice, 5);
+        return sum;
     }
 
     public int sixes() {
