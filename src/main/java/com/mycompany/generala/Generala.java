@@ -28,16 +28,19 @@ public class Generala {
     // '(int... dice)' es similar a tener public static int generala(int d1, int d2, int d3 , etc) pero permite realizar operaciones como -> for (int die : dice)
     //es una forma de decir que el metodo puede aceptar 1 o más parametros de tipo int ... lista de parametros dinamicos.
     public static int generala(int... dice) {
-        int[] counts = new int[6];
-        for (int die : dice) {
-            counts[die - 1]++;
-        }
-        for (int i = 0; i != 6; i++) {
-            if (counts[i] == 5) {
-                return 50;
-            }
+        if (sameDice(dice)) {
+            return 50;
         }
         return 0;
+    }
+
+    // Revisa si todos son iguales y los saca con el metodo distint
+    //si todos son iguales solo devolvera un elemento
+    public static boolean sameDice(int... dice) {
+        if (Arrays.stream(dice).distinct().toArray().length == 1) {
+            return true;
+        }
+        return false;
     }
 
     //Suma algunos los elementos de un array.
@@ -239,11 +242,6 @@ public class Generala {
             return false;
         }
         return true;
-    }
-
-    public static boolean checkFullHouse(int d1, int d2, int d3, int d4, int d5) {
-
-        return false;
     }
 
     public static int fullHouse(int d1, int d2, int d3, int d4, int d5) {
